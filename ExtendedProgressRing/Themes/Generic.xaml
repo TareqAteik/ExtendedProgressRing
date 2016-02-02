@@ -1,0 +1,54 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExtendedProgressRing">
+
+    <Style TargetType="local:ExtendedProgressRing">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ExtendedProgressRing">
+                    <Grid>
+                        <Path x:Name="backgroundPath" VerticalAlignment="Center" HorizontalAlignment="Center" Stroke="{TemplateBinding RingBackground}" StrokeThickness="{TemplateBinding Thickness}">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathGeometry.Figures>
+                                        <PathFigureCollection>
+                                            <PathFigure x:Name="backgroundPathFigure">
+                                                <PathFigure.Segments>
+                                                    <PathSegmentCollection>
+                                                        <ArcSegment x:Name="backgroundArcSegment" IsLargeArc="True" SweepDirection="Clockwise"  />
+                                                    </PathSegmentCollection>
+                                                </PathFigure.Segments>
+                                            </PathFigure>
+                                        </PathFigureCollection>
+                                    </PathGeometry.Figures>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        <Path x:Name="foregroundPath" VerticalAlignment="Center" HorizontalAlignment="Center" Stroke="{TemplateBinding RingForeground}"  StrokeThickness="{TemplateBinding Thickness}" >
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathGeometry.Figures>
+                                        <PathFigureCollection>
+                                            <PathFigure x:Name="foregroundPathFigure">
+                                                <PathFigure.Segments>
+                                                    <PathSegmentCollection>
+                                                        <ArcSegment x:Name="foregroundArcSegment" SweepDirection="Clockwise" />
+                                                    </PathSegmentCollection>
+                                                </PathFigure.Segments>
+                                            </PathFigure>
+                                        </PathFigureCollection>
+                                    </PathGeometry.Figures>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        <TextBlock Foreground="White" FontWeight="ExtraLight" FontSize="{TemplateBinding FontSize}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Run Text="{Binding Value,RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Run Text="%" />
+                        </TextBlock>
+                    </Grid>    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
